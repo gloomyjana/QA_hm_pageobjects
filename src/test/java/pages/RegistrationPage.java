@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
-import pages.components.RegistrationResultsModal;
 
 import java.io.File;
 
@@ -12,15 +11,14 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
-    RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
     private final SelenideElement FIRSTNAME_INPUT = $("#firstName"),
             LASTNAME_INPUT = $("#lastName"),
             USER_EMAIL_INPUT = $("#userEmail"),
             USER_GENDER_INPUT = $("#genterWrapper"),
-            USER_NUMBER_INPUT = $("#userNumber"),
+            USER_MOBILE_NUMBER = $("#userNumber"),
             DATE_OF_BIRTH_INPUT = $("#dateOfBirthInput"),
-            SUBJECT_INPUT = $("#subjectsInput"),
-            HOBBY_INPUT = $("#hobbiesWrapper"),
+            SUBJECTS_INPUT = $("#subjectsInput"),
+            HOBBIES_INPUT = $("#hobbiesWrapper"),
             UPLOAD_PICTURE_INPUT = $("#uploadPicture"),
             CURRENT_ADDRESS_INPUT = $("#currentAddress"),
             STATE_INPUT = $("#react-select-3-input"),
@@ -60,7 +58,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setUserNumber(String number) {
-        USER_NUMBER_INPUT.setValue(number);
+        USER_MOBILE_NUMBER.setValue(number);
         return this;
     }
 
@@ -71,12 +69,12 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setSubject(String subject) {
-        SUBJECT_INPUT.setValue(subject).pressEnter();
+        SUBJECTS_INPUT.setValue(subject).pressEnter();
         return this;
     }
 
     public RegistrationPage setHobby(String hobby) {
-        HOBBY_INPUT.$(byText(hobby)).click();
+        HOBBIES_INPUT.$(byText(hobby)).click();
         return this;
     }
 
@@ -102,16 +100,6 @@ public class RegistrationPage {
 
     public RegistrationPage submitForm() {
         SUBMIT_BUTTON.click();
-        return this;
-    }
-
-    public RegistrationPage verifyResultsModalAppears() {
-        registrationResultsModal.verifyModalAppears();
-        return this;
-    }
-
-    public RegistrationPage verifyResult(String key, String value) {
-        registrationResultsModal.verifyResult(key, value);
         return this;
     }
 }

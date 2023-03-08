@@ -1,8 +1,10 @@
 import org.junit.jupiter.api.Test;
+import pages.ModalPage;
 import pages.RegistrationPage;
 
 public class RegistrationWithPageObjectsTests {
     RegistrationPage registrationPage = new RegistrationPage();
+    ModalPage modalPage = new ModalPage();
 
     @Test
     void successfulRegistrationFormTest() {
@@ -33,12 +35,12 @@ public class RegistrationWithPageObjectsTests {
                 .setCity(cityName)
                 .submitForm();
 
-        registrationPage.verifyResultsModalAppears()
+        modalPage.verifyResultsModalAppears()
                 .verifyResult("Student Name", firstname + " " + lastname)
                 .verifyResult("Student Email", email)
                 .verifyResult("Gender", gender)
                 .verifyResult("Mobile", number)
-                .verifyResult("Date of Birth", day + " " + month + ","+ year)
+                .verifyResult("Date of Birth", day + " " + month + "," + year)
                 .verifyResult("Subjects", subject1 + ", " + subject2)
                 .verifyResult("Hobbies", hobby)
                 .verifyResult("Picture", "pic.jpg")
