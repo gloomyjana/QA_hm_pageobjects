@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultsModal;
@@ -27,12 +28,13 @@ public class RegistrationPage {
             SUBMIT_BUTTON = $("#submit");
 
     public RegistrationPage openPage() {
+        Configuration.browserSize = "1920x1080";
         open("https://demoqa.com/automation-practice-form");
         return this;
     }
 
     public RegistrationPage removeBanners() {
-        executeJavaScript("$('#footer').remove()");
+        executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
         return this;
     }

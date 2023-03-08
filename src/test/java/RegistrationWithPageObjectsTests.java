@@ -38,7 +38,7 @@ public class RegistrationWithPageObjectsTests {
                 .verifyResult("Student Email", email)
                 .verifyResult("Gender", gender)
                 .verifyResult("Mobile", number)
-                .verifyResult("Date of Birth", day + month + year)
+                .verifyResult("Date of Birth", day + " " + month + ","+ year)
                 .verifyResult("Subjects", subject1 + ", " + subject2)
                 .verifyResult("Hobbies", hobby)
                 .verifyResult("Picture", "pic.jpg")
