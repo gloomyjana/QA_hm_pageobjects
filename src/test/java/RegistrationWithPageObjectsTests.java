@@ -13,11 +13,13 @@ public class RegistrationWithPageObjectsTests {
                 gender = "Male",
                 number = "5553331234",
                 year = "1990", month = "April", day = "22",
-                subject1 = "Arts", subject2 = "Physics",
-                hobby = "Music",
+                subjects_str = "Arts, Physics",
+                hobbies_str = "Music, Sports",
                 pathname = "src/test/resources/pictures/pic.jpg",
                 address = "Current Address",
                 stateName = "Rajasthan", cityName = "Jaiselmer";
+        String[] subjects = subjects_str.split(", "),
+                hobbies = hobbies_str.split(", ");
 
         registrationPage.openPage()
                 .removeBanners()
@@ -27,8 +29,8 @@ public class RegistrationWithPageObjectsTests {
                 .setUserGender(gender)
                 .setUserNumber(number)
                 .setBirthDate(day, month, year)
-                .setSubject(subject1).setSubject(subject2)
-                .setHobby(hobby)
+                .setSubjects(subjects)
+                .setHobbies(hobbies)
                 .uploadPicture(pathname)
                 .setCurrentAddress(address)
                 .setState(stateName)
@@ -41,8 +43,8 @@ public class RegistrationWithPageObjectsTests {
                 .verifyResult("Gender", gender)
                 .verifyResult("Mobile", number)
                 .verifyResult("Date of Birth", day + " " + month + "," + year)
-                .verifyResult("Subjects", subject1 + ", " + subject2)
-                .verifyResult("Hobbies", hobby)
+                .verifyResult("Subjects", subjects_str)
+                .verifyResult("Hobbies", hobbies_str)
                 .verifyResult("Picture", "pic.jpg")
                 .verifyResult("Address", address)
                 .verifyResult("State and City", stateName + " " + cityName);
